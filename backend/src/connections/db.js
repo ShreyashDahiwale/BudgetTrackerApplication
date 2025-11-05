@@ -2,6 +2,7 @@ import mysql from 'mysql2/promise';
 
 const config = Object.assign({}, global.gconfig);
 
+
 const dbConfig = {
     host: config.database.host,
     user: config.database.username,

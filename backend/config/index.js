@@ -4,7 +4,7 @@ let _config = null;
 let configBuffer = null;
 
 
-exports.createConfig = (callback) => {
+export default function createConfig (callback) {
   configBuffer = fs.readFileSync(path.resolve(__dirname, 'data', 'config.json'), 'utf-8');
   if (!configBuffer) {
     console.log(constants.FILE404);
