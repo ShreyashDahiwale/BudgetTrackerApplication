@@ -4,9 +4,9 @@
     },
     "database": {
         "host": "mysql-shreyash-budgettracker-shreyash-db4114.j.aivencloud.com",
-        "username": "avnadmin",
+        "username": "",
         "port": 28777,
-        "password": "AVNS_m59taJOWEmgu-4S92sk",
+        "password": "",
         "database": "BudgetTracker"
     }
 }
