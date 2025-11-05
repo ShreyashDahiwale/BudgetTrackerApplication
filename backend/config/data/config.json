@@ -1,0 +1,12 @@
+{
+    "server": {
+        "port": 5000
+    },
+    "database": {
+        "host": "localhost",
+        "username": "root",
+        "port": 3306,
+        "password": "",
+        "database": "budget_tracker"
+    }
+}
