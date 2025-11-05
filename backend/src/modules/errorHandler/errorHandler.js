@@ -1,4 +1,4 @@
-module.exports = (error, req, res, next) => {
+export default (error, req, res, next) => {
   let statusCode=(res.statusCode != 200 )? res.statusCode : 500;
   res.status(statusCode).json({
     OPStatus: {

@@ -3,10 +3,10 @@
         "port": 5000
     },
     "database": {
-        "host": "localhost",
-        "username": "root",
-        "port": 3306,
-        "password": "",
-        "database": "budget_tracker"
+        "host": "mysql-shreyash-budgettracker-shreyash-db4114.j.aivencloud.com",
+        "username": "avnadmin",
+        "port": 28777,
+        "password": "AVNS_m59taJOWEmgu-4S92sk",
+        "database": "BudgetTracker"
     }
 }

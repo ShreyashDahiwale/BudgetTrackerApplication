@@ -4,17 +4,20 @@ import dotenv from 'dotenv';
 import authRoutes from './src/routes/authRoutes.js';
 import transactionRoutes from './src/routes/transactionRoutes.js';
 import budgetRoutes from './src/routes/budgetRoutes.js';
+import initialise from './app-utils/_initialise.js';
+import { expressify } from './app-utils/_expressify.js';
 
+// dotenv.config();
 
-import initialise from '../backend/app-utils/_initialise.js';
+export const app = express();
 let config = null;
 let server;
 
-initialise.initialize((app), (err) => {
+initialise(app, (err) => {
   if (err) { throw err; }
   else {
     config = Object.assign({}, global.gConfig);
-    require('./app-utils/_expressify').expressify((app), (error) => {
+    expressify(app, (error) => {
       if (error) { throw error; }
       else {
         server = app.listen((process.env.PORT || config.server.port), () =>
@@ -47,11 +50,6 @@ const closeApp = (event) => {
   require('./app-utils/exitHandler');
   process.exit(0);
 }
-
-export const app = express();
-// dotenv.config();
-
-
 
 // const app = express();
 // app.use(cors({ origin: true, credentials: true }));

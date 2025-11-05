@@ -1,4 +1,4 @@
-import configFile from '../config/index.js';
+import createConfig from '../config/index.js';
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 let config = null;
 
 export default async function initialize (app, callback) {
-    configFile.createConfig((err) => {
+    createConfig((err) => {
         if (err) {
             callback(err);
         } else {
@@ -31,7 +31,6 @@ export default async function initialize (app, callback) {
                     next();
                 }
             });
-            app.use(require("../src/swagger"));
             app.use("/pingMe", (req, res, next) => {
                 res.send(
                     ` Server is alive and uptime is : ${process.uptime()}`
