@@ -1,4 +1,4 @@
-import pool from '../../config/db.js';
+import {commonCrud, download} from '../utils/mysqlCrud.js';
 
 export async function getBudget(userId) {
   const [rows] = await pool.query('SELECT id, planned AS budget, actual FROM budgets WHERE user_id = ? LIMIT 1', [userId]);

@@ -1,4 +1,4 @@
-import { getBudget, upsertBudget } from '../models/Budget.js';
+import { getBudget, upsertBudget } from '../services/Budget.js';
 
 export async function readBudget(req, res) {
   const data = await getBudget(req.user.id);

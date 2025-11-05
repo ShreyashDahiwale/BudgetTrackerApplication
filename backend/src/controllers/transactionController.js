@@ -1,4 +1,4 @@
-import { listTransactions, createTransaction, updateTransaction, deleteTransaction } from '../models/Transaction.js';
+import { listTransactions, createTransaction, updateTransaction, deleteTransaction } from '../services/Transaction.js';
 
 export async function getTransactions(req, res) {
   const items = await listTransactions(req.user.id);

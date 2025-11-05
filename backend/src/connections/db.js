@@ -12,7 +12,7 @@ const dbConfig = {
 const pool = mysql.createPool(dbConfig);
 
 
-exports.con = pool;
+export const con = pool;
 
 exports.closeDbConn = () => {
     pool.end((err) => {
