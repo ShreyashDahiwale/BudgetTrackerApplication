@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import userAuth from '../services/userAuth.js';
 import '../styles/LoginPage.css';
 import accountingIcon from '../assets/accounting-icon2.svg';
 import SignupModel from "../components/SignUpModel.jsx";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -23,8 +22,21 @@ export default function LoginPage() {
     setError('');
     setBusy(true);
     try {
-      //   const user = await userAuth.login({ username, password });
-      // store token/user as needed (service already stores token)
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!res.ok) {
+        const body = await res.text().catch(() => null);
+        throw new Error(body || `Login failed (${res.status})`);
+      }
+
+      const data = await res.json();
+      if (data?.token) localStorage.setItem('authToken', data.token);
+      localStorage.setItem('currentUser', JSON.stringify(data.user || {}));
       navigate('/dashboard');
     } catch (err) {
       setError(err?.message || 'Login failed');
@@ -64,8 +76,8 @@ export default function LoginPage() {
             <input
               type="text"
               placeholder="User Name"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
 
@@ -84,16 +96,18 @@ export default function LoginPage() {
             <button type="button" className="btn sso" onClick={() => setShowSignup(true)}>
               SIGN UP
             </button>
-            {showSignup && (
-              <SignupModel
-                onClose={() => setShowSignup(false)}
-                onSuccess={handleSignupSuccess}
-              />
-            )}
 
           </form>
         </div>
       </div>
+
+      {showSignup && (
+        <SignupModel
+          onClose={() => setShowSignup(false)}
+          onSuccess={handleSignupSuccess}
+        />
+      )}
+
     </div>
   );
 }

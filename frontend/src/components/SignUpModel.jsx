@@ -56,7 +56,10 @@ export default function SignupModal({ onClose, onSuccess }) {
             placeholder="Choose a strong password"
           />
 
-          <button type="submit" className="btn-primary">Create Account</button>
+          <button type="submit" className="btn-primary">
+            Create Account
+          </button>
+
           <button type="button" className="btn-secondary" onClick={onClose}>
             Cancel
           </button>

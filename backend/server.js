@@ -13,6 +13,8 @@ export const app = express();
 let config = null;
 let server;
 
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+
 initialise(app, (err) => {
   if (err) { throw err; }
   else {
@@ -47,7 +49,7 @@ const closeApp = (event) => {
   server.close(() => {
     console.log('Http server closed.');
   });
-  require('./app-utils/exitHandler');
+  // require('./app-utils/exitHandler');
   process.exit(0);
 }
 
