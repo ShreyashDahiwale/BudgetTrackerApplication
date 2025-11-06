@@ -41,7 +41,7 @@ export default function LoginPage() {
     <div className="login-root">
       <div className="login-left">
         <div className="brand">
-          <div className="logo">BT</div>
+          {/* <div className="logo">BT</div> */}
           <h1>Budget Tracker</h1>
         </div>
         <div className="hero">
@@ -49,7 +49,7 @@ export default function LoginPage() {
         </div>
         <h2>WELCOME</h2>
         <p className="desc">
-          A platform for managing your Budget and Expenses easily and efficiently.
+          A platform for managing your Budget and daily Expenses easily and efficiently.
         </p>
       </div>
 
