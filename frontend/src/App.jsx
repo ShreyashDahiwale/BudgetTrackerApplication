@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
-import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Transactions from './pages/Transactions.jsx';
 import Budget from './pages/Budget.jsx';

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 // import userAuth from '../services/userAuth.js';
 import '../styles/LoginPage.css';
 import accountingIcon from '../assets/accounting-icon2.svg';
+import SignupModel from "../components/SignUpModel.jsx";
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -11,12 +12,18 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const [showSignup, setShowSignup] = useState(false);
+
+  function handleSignupSuccess() {
+    console.log("User registered successfully!");
+  }
+
   const submit = async (e) => {
     e.preventDefault();
     setError('');
     setBusy(true);
     try {
-    //   const user = await userAuth.login({ username, password });
+      //   const user = await userAuth.login({ username, password });
       // store token/user as needed (service already stores token)
       navigate('/dashboard');
     } catch (err) {
@@ -74,9 +81,15 @@ export default function LoginPage() {
               {busy ? 'Logging in...' : 'LOGIN'}
             </button>
 
-            <button type="button" className="btn sso" onClick={handleSso}>
+            <button type="button" className="btn sso" onClick={() => setShowSignup(true)}>
               SIGN UP
             </button>
+            {showSignup && (
+              <SignupModel
+                onClose={() => setShowSignup(false)}
+                onSuccess={handleSignupSuccess}
+              />
+            )}
 
           </form>
         </div>
